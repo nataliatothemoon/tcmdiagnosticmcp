@@ -6,14 +6,21 @@ This version is the eczema pathway. A general check-in for repeat tongue photos 
 
 This is an educational case study. It is not a medical diagnosis or a prescription. Herbs and needles belong with a licensed practitioner.
 
-## Run
+## Install
+
+You need Python 3.11 or newer, and Cursor.
 
 ```bash
-py -3 -m pip install -e ".[dev]"
-py -3 -m tcm_eczema_mcp
+git clone https://github.com/nataliatothemoon/tcmdiagnosticmcp
+cd tcmdiagnosticmcp
+py -3 install.py
 ```
 
-Cursor can launch it with [examples/cursor-mcp.json](examples/cursor-mcp.json). Set `cwd` to this repository.
+On macOS or Linux, run `python3 install.py` instead. That command installs the server and writes `.cursor/mcp.json` with this computer's Python and folder. You do not edit a path.
+
+Reload the Cursor window, then open a new Agent chat in this project. The server name is `tcm-eczema`.
+
+Do not start `python -m tcm_eczema_mcp` in a terminal and wait for a prompt. Cursor starts it for you.
 
 ## Session
 
