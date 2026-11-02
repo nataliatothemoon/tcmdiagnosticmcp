@@ -1,0 +1,247 @@
+enums:
+  sex: [female, male, other, unspecified]
+  purpose: [eczema, curious, both]
+  body_color: [pale, light_red, red, red_tip_and_sides, crimson]
+  shape: [thin, moderate, swollen]
+  tooth_marks: [absent, present]
+  coat_color: [white, yellow, none]
+  coat_thickness: [thin, thick, scanty_or_peeled]
+  coat_greasy: ["yes", "no"]
+  cracks: [absent, present]
+  region: [unremarkable, redder, paler, thicker_coat, peeled]
+  site: [hands, fingers, feet, ankles, elbow_flexures, upper_lip, posterior_thighs, face_other, trunk, scalp, other]
+  morphology: [weeping_vesicles, papules_little_exudate, dry_rough_lichenified]
+  sensation: [itch_without_heat, itch_with_heat, burning]
+  stage: [acute, subacute, chronic]
+
+main_points:
+  source: consensus-2016
+  method_note: "The consensus retains needles about 30 minutes, about once every 1 to 2 days. Damp-heat immersion uses a reducing method. The other patterns use an even method. This is a description of practitioner care, not a self-treatment instruction."
+  points:
+    - {code: DU14, zh: 大椎, en: Dazhui}
+    - {code: LI11, zh: 曲池, en: Quchi}
+    - {code: LI4, zh: 合谷, en: Hegu}
+    - {code: GB31, zh: 风市, en: Fengshi}
+    - {code: SP6, zh: 三阴交, en: Sanyinjiao}
+    - {code: ashi, zh: 阿是穴, en: local ashi points}
+
+care:
+  - id: education
+    source: consensus-2016
+    text: "Learn how eczema tends to behave and how it is looked after, so the day-to-day care is easier to keep up."
+  - id: diet
+    source: consensus-2016
+    text: "Be cautious with fishy, wind-stirring foods. Notice the skin when they are eaten and when they are stopped. The consensus does not call for cutting out every food by habit."
+  - id: spicy_alcohol
+    source: consensus-2016
+    text: "The consensus names overeating spicy food, and alcohol, among the habits that injure the spleen and stomach and generate damp-heat."
+  - id: washing
+    source: consensus-2016
+    text: "Avoid very hot washing, harsh soap, and other irritants on the rash."
+  - id: emollient
+    source: consensus-2016
+    text: "For chronic eczema, the consensus stresses regular moisturizing over a long period."
+  - id: stress
+    source: consensus-2016
+    text: "Avoid prolonged nervous strain and exhaustion. Keep a regular rhythm of rest and activity."
+  - id: primary_disease
+    source: consensus-2016
+    text: "If another illness is driving the skin, the consensus says to have that illness treated as well."
+
+external:
+  compress:
+    source: consensus-2016
+    when_morphology: [weeping_vesicles]
+    text: "For weeping lesions, the consensus describes a cold wet compress: gauze of about 4 to 6 layers wet with a heat-clearing, damp-drying, itch-relieving solution, wrung until it does not drip, applied about 20 minutes, about 2 to 4 times a day, as a practitioner directs."
+  bath_acute:
+    source: consensus-2016
+    when_stage: [acute, subacute]
+    when_not_morphology: [weeping_vesicles]
+    text: "When exudation is not marked, the consensus describes an acute or subacute bath using Ku Shen, Bai Xian Pi, Di Fu Zi, Ma Chi Xian, Huang Bai, Di Yu, and Qian Li Guang."
+  bath_chronic:
+    source: consensus-2016
+    when_stage: [chronic]
+    when_not_morphology: [weeping_vesicles]
+    text: "For chronic lesions without marked exudation, the consensus describes a bath using Dang Gui, Tao Ren, Sheng Di, Ji Xue Teng, She Chuang Zi, and Tu Jing Pi."
+
+patterns:
+  - id: wind_heat
+    name_en: Wind-heat in the skin
+    name_zh: 风热蕴肤
+    principle: Dispel wind, clear heat, and stop itching
+    principle_zh: 疏风清热止痒
+    formula: Xiao Feng San
+    formula_zh: 消风散
+    herbs: [荆芥, 防风, 苦参, 蝉蜕, 麻仁, 牛蒡子, 生地, 丹皮, 赤芍, 当归, 甘草]
+    herbs_note: "Herbs named for this pattern in the 2016 consensus."
+    extra_points: []
+    needle_method: even
+    mechanism: "The consensus places this pattern at the start of acute eczema, or in an acute flare of chronic eczema. Lesions are mainly red papules, with scale or crust and little exudation, burning, and intense itch. Fever and thirst may be present. The tongue border and tip, or the whole tongue, are red, with a thin yellow coat."
+    source: consensus-2016
+    rule_out:
+      - id: dominant_weeping
+        statement: "Wind-heat in the skin is described with little exudation, so a dominant weeping vesicular rash is incompatible with it on inspection."
+        all:
+          - {path: lesions.morphology, eq: weeping_vesicles}
+      - id: chronic_dry_lichenification
+        statement: "A chronic, dry, rough, lichenified rash is the consensus picture of yin deficiency with blood dryness, not of wind-heat in the skin."
+        all:
+          - {path: lesions.stage, eq: chronic}
+          - {path: lesions.morphology, eq: dry_rough_lichenified}
+
+  - id: damp_heat
+    name_en: Damp-heat immersion
+    name_zh: 湿热浸淫
+    principle: Clear heat, dry dampness, and stop itching
+    principle_zh: 清热燥湿止痒
+    formula: Long Dan Xie Gan Tang
+    formula_zh: 龙胆泻肝汤
+    herbs: [龙胆草, 连翘, 栀子, 柴胡, 生地黄, 车前子, 泽泻, 生甘草, 牡丹皮]
+    herbs_note: "Herbs named for this pattern in the 2016 consensus."
+    extra_points:
+      - {code: SP9, zh: 阴陵泉, en: Yinlingquan}
+      - {code: DU13, zh: 陶道, en: Taodao}
+      - {code: BL13, zh: 肺俞, en: Feishu}
+    needle_method: reducing
+    mechanism: "The consensus places this pattern in acute eczema. Lesions are bright red, with papules, vesicles, and blisters, burning, and intense itch. Scratching leads to erosion and exudation. Restlessness, thirst, dark urine, and dry stool may be present. The tongue is red with a yellow greasy coat."
+    source: consensus-2016
+    rule_out:
+      - id: no_exudation_and_no_greasy_coat
+        statement: "Damp-heat immersion is tied to exudation and a yellow greasy coat. A non-weeping rash with a coat that is neither thick nor greasy is incompatible with it on inspection."
+        all:
+          - {path: lesions.morphology, not_eq: weeping_vesicles}
+          - {path: tongue.coat_greasy, eq: "no"}
+          - {path: tongue.coat_thickness, not_eq: thick}
+
+  - id: spleen_damp
+    name_en: Spleen deficiency with damp accumulation
+    name_zh: 脾虚湿蕴
+    principle: Strengthen the spleen, drain dampness, and stop itching
+    principle_zh: 健脾利湿止痒
+    formula: Chu Shi Wei Ling Tang
+    formula_zh: 除湿胃苓汤
+    herbs: [苍术, 陈皮, 厚朴, 茯苓, 泽泻, 薏苡仁, 白鲜皮, 地肤子, 甘草]
+    herbs_note: "Herbs named for this pattern in the 2016 consensus."
+    extra_points:
+      - {code: BL20, zh: 脾俞, en: Pishu}
+      - {code: BL21, zh: 胃俞, en: Weishu}
+    needle_method: even
+    mechanism: "The consensus places this pattern in subacute eczema. Lesions are mainly papules or vesicles, dull in color or scaly, with a little exudation and itch. Poor appetite, fatigue, abdominal distension, and loose stool may be present. Urine is clear or slightly yellow. The tongue is pale and swollen, with a thin white or greasy coat."
+    source: consensus-2016
+    rule_out:
+      - id: red_tongue_without_spleen_signs
+        statement: "Spleen deficiency with damp accumulation is described with a pale, swollen tongue and a white coat. A red tongue that is not swollen, without tooth marks, and without a white coat is incompatible with it on inspection."
+        all:
+          - {path: tongue.body_color, in: [red, red_tip_and_sides, crimson]}
+          - {path: tongue.shape, not_eq: swollen}
+          - {path: tongue.tooth_marks, eq: absent}
+          - {path: tongue.coat_color, not_eq: white}
+
+  - id: yin_blood_dry
+    name_en: Yin deficiency with blood dryness
+    name_zh: 阴虚血燥
+    principle: Nourish yin and blood, moisten dryness, and stop itching
+    principle_zh: 滋阴养血，润燥止痒
+    formula: Liang Xue Si Wu Tang
+    formula_zh: 凉血四物汤
+    herbs: [当归, 生地黄, 玄参, 沙参, 丹参, 牡丹皮, 刺蒺藜, 防风]
+    herbs_note: "Herbs named for this pattern in the 2016 consensus."
+    related_formula:
+      name: Danggui Yinzi
+      name_zh: 当归饮子
+      source: ad-review-2021
+      text: "A 2021 systematic review found Danggui Yinzi (当归饮子) was the named formula most often studied for blood deficiency and wind-dryness, a related chronic dryness pattern in atopic dermatitis trials. The 2016 consensus formula for yin deficiency with blood dryness remains Liang Xue Si Wu Tang (凉血四物汤)."
+    extra_points:
+      - {code: BL17, zh: 膈俞, en: Geshu}
+      - {code: BL18, zh: 肝俞, en: Ganshu}
+      - {code: SP10, zh: 血海, en: Xuehai}
+    needle_method: even
+    mechanism: "The consensus places this pattern in chronic eczema. Lesions are dry, scaling, rough, and thickened, with lichenification and scratch marks, and the itch is severe. Dry mouth, dry stool, or heat in the palms and soles may be present. The tongue is red with a scanty or peeled coat."
+    source: consensus-2016
+    rule_out:
+      - id: acute_without_dry_coat
+        statement: "Yin deficiency with blood dryness is the consensus chronic pattern, with a scanty or peeled coat. An acute rash that is not dry and lichenified, and a coat that is not scanty or peeled, are incompatible with it on inspection."
+        all:
+          - {path: lesions.stage, eq: acute}
+          - {path: lesions.morphology, not_eq: dry_rough_lichenified}
+          - {path: tongue.coat_thickness, not_eq: scanty_or_peeled}
+
+# Inspection weights apply only to patterns that inspection has not ruled out.
+weights:
+  tongue.body_color:
+    pale:
+      - {pattern: spleen_damp, weight: 3, source: consensus-2016, statement: "A pale tongue is the tongue body described for spleen deficiency with damp accumulation."}
+      - {pattern: damp_heat, weight: -2, source: consensus-2016, statement: "Damp-heat immersion is described with a red tongue, so a pale tongue counts against it."}
+      - {pattern: wind_heat, weight: -2, source: consensus-2016, statement: "Wind-heat in the skin is described with a red tongue, so a pale tongue counts against it."}
+    red:
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "A red tongue is described for damp-heat immersion."}
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "A red tongue is described for wind-heat in the skin."}
+      - {pattern: yin_blood_dry, weight: 2, source: consensus-2016, statement: "A red tongue is described for yin deficiency with blood dryness."}
+      - {pattern: spleen_damp, weight: -2, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is described with a pale tongue, so a red tongue counts against it."}
+    red_tip_and_sides:
+      - {pattern: wind_heat, weight: 3, source: consensus-2016, statement: "A red tongue tip and sides are described for wind-heat in the skin."}
+      - {pattern: spleen_damp, weight: -2, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is described with a pale tongue, so a red tip and sides count against it."}
+    crimson:
+      - {pattern: damp_heat, weight: 3, source: consensus-2016, statement: "A deep red tongue agrees with the red tongue of damp-heat immersion."}
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "A deep red tongue agrees with the red tongue of wind-heat in the skin."}
+      - {pattern: spleen_damp, weight: -2, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is described with a pale tongue, so a deep red tongue counts against it."}
+  tongue.shape:
+    swollen:
+      - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "A swollen tongue is described for spleen deficiency with damp accumulation."}
+  tongue.tooth_marks:
+    present:
+      - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Tooth marks fit the swollen tongue described for spleen deficiency with damp accumulation."}
+  tongue.coat_color:
+    white:
+      - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "A white coat is described for spleen deficiency with damp accumulation."}
+      - {pattern: damp_heat, weight: -1, source: consensus-2016, statement: "Damp-heat immersion is described with a yellow coat, so a white coat counts against it."}
+      - {pattern: wind_heat, weight: -1, source: consensus-2016, statement: "Wind-heat in the skin is described with a yellow coat, so a white coat counts against it."}
+    yellow:
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "A yellow coat is described for damp-heat immersion."}
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "A yellow coat is described for wind-heat in the skin."}
+      - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is described with a white coat, so a yellow coat counts against it."}
+    none:
+      - {pattern: yin_blood_dry, weight: 2, source: consensus-2016, statement: "Little or no coat agrees with the scanty or peeled coat of yin deficiency with blood dryness."}
+  tongue.coat_thickness:
+    thin:
+      - {pattern: wind_heat, weight: 1, source: consensus-2016, statement: "A thin coat is described for wind-heat in the skin."}
+      - {pattern: spleen_damp, weight: 1, source: consensus-2016, statement: "A thin coat is described for spleen deficiency with damp accumulation."}
+    scanty_or_peeled:
+      - {pattern: yin_blood_dry, weight: 3, source: consensus-2016, statement: "A scanty or peeled coat is described for yin deficiency with blood dryness."}
+      - {pattern: damp_heat, weight: -2, source: consensus-2016, statement: "Damp-heat immersion is described with a greasy coat, so a scanty or peeled coat counts against it."}
+  tongue.coat_greasy:
+    "yes":
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "A greasy coat is described for damp-heat immersion."}
+      - {pattern: spleen_damp, weight: 1, source: consensus-2016, statement: "A greasy coat is one of the coats described for spleen deficiency with damp accumulation."}
+  lesions.stage:
+    acute:
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "Wind-heat in the skin is placed in acute eczema or an acute flare."}
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Damp-heat immersion is placed in acute eczema."}
+      - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is placed in subacute eczema, so a purely acute stage counts against it."}
+      - {pattern: yin_blood_dry, weight: -2, source: consensus-2016, statement: "Yin deficiency with blood dryness is placed in chronic eczema, so an acute stage counts against it."}
+    subacute:
+      - {pattern: spleen_damp, weight: 3, source: consensus-2016, statement: "Spleen deficiency with damp accumulation is placed in subacute eczema."}
+    chronic:
+      - {pattern: yin_blood_dry, weight: 3, source: consensus-2016, statement: "Yin deficiency with blood dryness is placed in chronic eczema."}
+  lesions.morphology:
+    weeping_vesicles:
+      - {pattern: damp_heat, weight: 4, source: consensus-2016, statement: "Vesicles, blisters, erosion, and exudation are the lesion form given for damp-heat immersion."}
+      - {pattern: wind_heat, weight: -3, source: consensus-2016, statement: "Wind-heat in the skin is described with little exudation, so weeping vesicles count against it."}
+      - {pattern: yin_blood_dry, weight: -3, source: consensus-2016, statement: "Yin deficiency with blood dryness is described as dry and rough, so weeping vesicles count against it."}
+    papules_little_exudate:
+      - {pattern: wind_heat, weight: 3, source: consensus-2016, statement: "Red papules with little exudation are the lesion form given for wind-heat in the skin."}
+      - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Papules with little exudation fit the subacute lesions of spleen deficiency with damp accumulation."}
+    dry_rough_lichenified:
+      - {pattern: yin_blood_dry, weight: 4, source: consensus-2016, statement: "Dry, rough, thickened, lichenified skin is the lesion form given for yin deficiency with blood dryness."}
+      - {pattern: damp_heat, weight: -2, source: consensus-2016, statement: "Damp-heat immersion is described with exudation, so a dry lichenified rash counts against it."}
+      - {pattern: wind_heat, weight: -1, source: consensus-2016, statement: "Wind-heat in the skin is an acute papular pattern, so chronic-type lichenification counts against it."}
+  lesions.sensation:
+    itch_with_heat:
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "Burning and intense itch are described for wind-heat in the skin."}
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Burning and intense itch are described for damp-heat immersion."}
+    burning:
+      - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "A burning sensation is described for wind-heat in the skin."}
+      - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "A burning sensation is described for damp-heat immersion."}
+    itch_without_heat:
+      - {pattern: yin_blood_dry, weight: 1, source: consensus-2016, statement: "Intense itch is described for yin deficiency with blood dryness. Itch without a hot feeling does not add a heat-pattern point."}
+      - {pattern: spleen_damp, weight: 1, source: consensus-2016, statement: "Itch is described for spleen deficiency with damp accumulation. Itch without a hot feeling does not add a heat-pattern point."}

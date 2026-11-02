@@ -1,0 +1,299 @@
+# Each question is asked when at least one pattern in `informs` is still plausible
+# after inspection. Effects exist only where the 2016 consensus names that sign.
+# Bitter taste, limb heaviness, and cycle timing are collected for the workup
+# and do not change the score.
+questions:
+  - id: onset_speed
+    informs: [wind_heat]
+    prompt: "Did this flare start quickly, over hours or a few days, or did the rash build gradually?"
+    options:
+      - id: sudden
+        label: "It started quickly"
+        effects:
+          - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "A fast onset fits wind-heat in the skin, which the consensus places at the start of acute eczema or in an acute flare."}
+      - id: gradual
+        label: "It built gradually"
+        effects:
+          - {pattern: wind_heat, weight: -1, source: consensus-2016, statement: "A gradual onset counts against wind-heat in the skin, which is described as a fast acute pattern."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: fever
+    informs: [wind_heat]
+    prompt: "With the flare, has there been a fever?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "Fever is listed with wind-heat in the skin."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: wind_heat, weight: -1, source: consensus-2016, statement: "Fever was absent. The consensus lists fever as a possible sign of wind-heat in the skin."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: thirst
+    informs: [wind_heat, damp_heat]
+    prompt: "During a flare, are you noticeably thirsty?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: wind_heat, weight: 2, source: consensus-2016, statement: "Thirst is listed with wind-heat in the skin."}
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Thirst is listed with damp-heat immersion."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: wind_heat, weight: -1, source: consensus-2016, statement: "Thirst was absent. The consensus lists thirst with wind-heat in the skin."}
+          - {pattern: damp_heat, weight: -1, source: consensus-2016, statement: "Thirst was absent. The consensus lists thirst with damp-heat immersion."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: restlessness
+    informs: [wind_heat, damp_heat]
+    prompt: "During a flare, do you feel restless or irritable in a way that is unusual for you?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Restlessness is listed with damp-heat immersion."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: damp_heat, weight: -1, source: consensus-2016, statement: "Restlessness was absent. The consensus lists it with damp-heat immersion."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: bitter_taste
+    informs: [wind_heat, damp_heat]
+    prompt: "During a flare, do you notice a bitter taste in the mouth?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects: []
+      - id: "no"
+        label: "No"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: stool_dry
+    informs: [wind_heat, damp_heat, yin_blood_dry]
+    prompt: "Are your stools often dry?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Dry stool is listed with damp-heat immersion."}
+          - {pattern: yin_blood_dry, weight: 2, source: consensus-2016, statement: "Dry stool is listed with yin deficiency with blood dryness."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: damp_heat, weight: -1, source: consensus-2016, statement: "Stools were not dry. The consensus lists dry stool with damp-heat immersion."}
+          - {pattern: yin_blood_dry, weight: -1, source: consensus-2016, statement: "Stools were not dry. The consensus lists dry stool with yin deficiency with blood dryness."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: urine_during_flare
+    informs: [damp_heat, spleen_damp]
+    prompt: "During a flare, what is your urine usually like?"
+    options:
+      - id: dark
+        label: "Darker or scantier than usual"
+        effects:
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "Dark urine is listed with damp-heat immersion."}
+      - id: clear_or_slightly_yellow
+        label: "Clear or only slightly yellow"
+        effects:
+          - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Clear or slightly yellow urine is listed with spleen deficiency with damp accumulation."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: appetite
+    informs: [spleen_damp]
+    prompt: "How is your appetite?"
+    options:
+      - id: poor
+        label: "Poor"
+        effects:
+          - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Poor appetite is listed with spleen deficiency with damp accumulation."}
+      - id: good
+        label: "Generally good"
+        effects:
+          - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Appetite was generally good. The consensus lists poor appetite with spleen deficiency with damp accumulation."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: fatigue
+    informs: [spleen_damp]
+    prompt: "Do you get unusually tired, or does your energy drop in a way you notice?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Fatigue is listed with spleen deficiency with damp accumulation."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Fatigue was absent. The consensus lists fatigue with spleen deficiency with damp accumulation."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: abdominal_distension
+    informs: [spleen_damp]
+    prompt: "Do you often feel abdominal bloating or distension?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Abdominal distension is listed with spleen deficiency with damp accumulation."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Abdominal distension was absent. The consensus lists it with spleen deficiency with damp accumulation."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: loose_stool
+    informs: [spleen_damp]
+    prompt: "Are your stools often loose?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: spleen_damp, weight: 2, source: consensus-2016, statement: "Loose stool is listed with spleen deficiency with damp accumulation."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: spleen_damp, weight: -1, source: consensus-2016, statement: "Stools were not loose. The consensus lists loose stool with spleen deficiency with damp accumulation."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: limb_heaviness
+    informs: [spleen_damp]
+    prompt: "On low-energy days, do your arms or legs feel heavy?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects: []
+      - id: "no"
+        label: "No"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: spicy_food
+    informs: [damp_heat, spleen_damp, wind_heat]
+    prompt: "How often do you eat distinctly spicy food?"
+    options:
+      - id: often
+        label: "Often"
+        effects:
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "The consensus etiology includes frequent spicy food among the habits that generate damp-heat."}
+          - {pattern: spleen_damp, weight: 1, source: consensus-2016, statement: "The consensus etiology says spicy food can injure the spleen and stomach."}
+      - id: sometimes
+        label: "Sometimes"
+        effects:
+          - {pattern: damp_heat, weight: 1, source: consensus-2016, statement: "Spicy food is part of the consensus etiology of internally generated damp-heat."}
+      - id: rarely_or_never
+        label: "Rarely or never"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: alcohol
+    informs: [damp_heat, spleen_damp]
+    prompt: "Do you drink alcohol?"
+    options:
+      - id: often
+        label: "Often"
+        effects:
+          - {pattern: damp_heat, weight: 2, source: consensus-2016, statement: "The consensus etiology includes alcohol among the habits that injure the spleen and stomach and generate damp-heat."}
+          - {pattern: spleen_damp, weight: 1, source: consensus-2016, statement: "The consensus etiology says alcohol can injure the spleen and stomach."}
+      - id: sometimes
+        label: "Sometimes"
+        effects:
+          - {pattern: damp_heat, weight: 1, source: consensus-2016, statement: "Alcohol is part of the consensus etiology of internally generated damp-heat."}
+      - id: never
+        label: "Never"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: fishy_food
+    informs: [wind_heat, damp_heat]
+    prompt: "Do fishy foods make the rash worse?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: wind_heat, weight: 1, source: consensus-2016, statement: "The consensus etiology includes fishy, wind-stirring foods among the dietary triggers of eczema."}
+          - {pattern: damp_heat, weight: 1, source: consensus-2016, statement: "The consensus etiology includes fishy, wind-stirring foods among the dietary triggers of eczema."}
+      - id: "no"
+        label: "No"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: dry_mouth
+    informs: [yin_blood_dry]
+    prompt: "Is your mouth often dry?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: yin_blood_dry, weight: 2, source: consensus-2016, statement: "Dry mouth is listed with yin deficiency with blood dryness."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: yin_blood_dry, weight: -1, source: consensus-2016, statement: "Dry mouth was absent. The consensus lists it with yin deficiency with blood dryness."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: palm_sole_heat
+    informs: [yin_blood_dry]
+    prompt: "Do your palms or soles often feel hot, including at night?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects:
+          - {pattern: yin_blood_dry, weight: 2, source: consensus-2016, statement: "Heat in the palms and soles is listed with yin deficiency with blood dryness."}
+      - id: "no"
+        label: "No"
+        effects:
+          - {pattern: yin_blood_dry, weight: -1, source: consensus-2016, statement: "Heat in the palms and soles was absent. The consensus lists it with yin deficiency with blood dryness."}
+      - id: unknown
+        label: "Not sure"
+        effects: []
+
+  - id: cycle_timing
+    informs: [wind_heat, damp_heat, yin_blood_dry]
+    when: {sex: [female], age_min: 12, age_max: 55}
+    prompt: "If you menstruate, do flares cluster in the days before the period?"
+    options:
+      - id: "yes"
+        label: "Yes"
+        effects: []
+      - id: "no"
+        label: "No clear link"
+        effects: []
+      - id: unknown
+        label: "Not sure"
+        effects: []

@@ -1,0 +1,14 @@
+version: consensus-2016-v1
+sources:
+  consensus-2016:
+    citation: "China Association of Chinese Medicine, dermatology branch. Expert consensus on TCM diagnosis and treatment of eczema (湿疹/湿疮), 2016. Chinese Journal of Dermatovenereology of Integrated Traditional and Western Medicine. 2018;17(2):181-183."
+    used_for: "Pattern names, tongue and lesion signs, inquiry items, formulas, representative herbs, acupoints, external care, and daily care encoded in this version."
+  ad-review-2021:
+    citation: "Integrated Chinese and western medicine interventions for atopic dermatitis: a systematic review and meta-analysis. Chinese Medicine. 2021. https://doi.org/10.1186/s13020-021-00506-2"
+    used_for: "Notes that damp-heat, spleen deficiency with dampness, spleen deficiency, and blood deficiency with wind-dryness were the syndromes most often reported, and that Danggui Yinzi was the formula most often studied for blood deficiency with wind-dryness. This source does not add a fifth scored pattern."
+  gx-tongue-2021:
+    citation: "Analysis of the correlation between tongue image features and traditional Chinese medicine syndromes in patients with atopic dermatitis. First Affiliated Hospital of Guangxi University of Chinese Medicine, 130 patients. Article 20210810."
+    used_for: "Context only. Among those patients the recorded syndromes were spleen deficiency with dampness, damp-heat accumulation, and blood deficiency with wind-dryness. Color measurements from the abstract are not used as scoring rules."
+  tongue-review:
+    citation: "Tongue inspection and diagnosis: past, present, and future. https://doi.org/10.31488/jjm.159"
+    used_for: "Region labels only (tip, sides, center, root). Region notes are stored and are not part of the eczema pattern score."

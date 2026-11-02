@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tcm-eczema": {
+      "command": "py",
+      "args": ["-3", "-m", "tcm_eczema_mcp"],
+      "cwd": "c:\\Users\\16463\\code_directory\\tcmdiagnosticmcp"
+    }
+  }
+}
